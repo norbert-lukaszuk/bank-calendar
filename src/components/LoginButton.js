@@ -4,7 +4,7 @@ const LoginButton = ({ isLoggedIn, signIn }) => {
   const gapi = window.gapi;
 
   console.log(isLoggedIn);
-  if (!isLoggedIn) {
+  if (isLoggedIn) {
     return (
       <div>
         <button onClick={signIn}>Login</button>

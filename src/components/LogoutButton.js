@@ -1,10 +1,11 @@
 import React from "react";
 
-const LogoutButton = ({ isLoggedOut }) => {
+const LogoutButton = ({ isLoggedOut, signOut }) => {
+  console.log(isLoggedOut);
   if (isLoggedOut) {
     return (
       <div>
-        <button>Logout</button>
+        <button onClick={signOut}>Logout</button>
       </div>
     );
   } else {

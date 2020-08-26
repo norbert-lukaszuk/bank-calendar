@@ -15,7 +15,9 @@ function App() {
   ];
   const SCOPES = "https://www.googleapis.com/auth/calendar.events";
 
+  // function to control witch button apear
   function flipButtonStates(status) {
+    console.log(status);
     if (status) {
       setIsLoggedIn(false);
       setIsLoggedOut(true);
@@ -24,6 +26,7 @@ function App() {
       setIsLoggedOut(false);
     }
   }
+  // gapi initialization
   const gapiLoad = () => {
     gapi.load("client:auth2", () => {
       gapi.client
@@ -33,24 +36,36 @@ function App() {
           discoveryDocs: DISCOVERY_DOCS,
           scope: SCOPES,
         })
-        .then(() =>
-          gapi.auth2.getAuthInstance().isSignedIn.listen(flipButtonStates)
-        )
         .then(console.log("client initieted"))
-        .then(gapi.client.load("calendar", "v3", () => {}));
+        .then(
+          gapi.client.load("calendar", "v3", () => {
+            console.log("client loaded");
+          })
+        )
+        // flip the buttons in initial signin status
+        .then(() =>
+          flipButtonStates(gapi.auth2.getAuthInstance().isSignedIn.get())
+        )
+        // add listener for signin stautus change
+        .then(() => {
+          gapi.auth2.getAuthInstance().isSignedIn.listen(flipButtonStates);
+        });
     });
   };
-
+  // sign in gapi method passed to signin button
   const signIn = () => {
     gapi.auth2.getAuthInstance().signIn();
-    setIsLoggedIn(true);
   };
-
+  // sign out gapi method passed to signout button
+  const signOut = () => {
+    gapi.auth2.getAuthInstance().signOut();
+  };
   useEffect(gapiLoad, []);
+
   return (
     <div className="App">
       <LoginButton isLoggedIn={isLoggedIn} signIn={signIn} />
-      <LogoutButton isLoggedOut={isLoggedOut} />
+      <LogoutButton isLoggedOut={isLoggedOut} signOut={signOut} />
     </div>
   );
 }
