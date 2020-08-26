@@ -1,24 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import "./App.css";
 
 function App() {
+  const gapi = window.gapi;
+  const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
+  const API_KEY = process.env.REACT_APP_API_KEY;
+  const DISCOVERY_DOCS = [
+    "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest",
+  ];
+  const SCOPES = "https://www.googleapis.com/auth/calendar.events";
+  const gapiLoad = () => {
+    gapi.load("client:auth2", () => {
+      gapi.client
+        .init({
+          apiKey: API_KEY,
+          clientId: CLIENT_ID,
+          discoveryDocs: DISCOVERY_DOCS,
+          scope: SCOPES,
+        })
+        .then(console.log("client initieted"))
+        .then(
+          gapi.client.load("calendar", "v3", () => console.log("client loaded"))
+        );
+    });
+  };
+  useEffect(gapiLoad, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button>Login</button>
     </div>
   );
 }
