@@ -1,12 +1,10 @@
 import React from "react";
+import "./LoginButton.css";
 
 const LoginButton = ({ isLoggedIn, signIn }) => {
-  const gapi = window.gapi;
-
-  console.log(isLoggedIn);
   if (isLoggedIn) {
     return (
-      <div>
+      <div className="loginButton">
         <button onClick={signIn}>Login</button>
       </div>
     );

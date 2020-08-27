@@ -85,12 +85,20 @@ function App() {
         setEvents(events);
       });
   };
+  const eventClickHandler = (eventIndex) => {
+    console.log(eventIndex);
+    const newEvents = [...events];
+    newEvents.splice(eventIndex, 1);
+    setEvents(newEvents);
+  };
   useEffect(gapiLoad, []);
 
   return (
     <BrowserRouter>
       <div className="App">
         <header>
+          <LoginButton isLoggedIn={isLoggedIn} signIn={signIn} />
+          <LogoutButton isLoggedOut={isLoggedOut} signOut={signOut} />
           <nav>
             <ul className="navList">
               <li>
@@ -101,14 +109,16 @@ function App() {
               </li>
             </ul>
           </nav>
-          <LoginButton isLoggedIn={isLoggedIn} signIn={signIn} />
-          <LogoutButton isLoggedOut={isLoggedOut} signOut={signOut} />
         </header>
         <Route
           path="/list"
           exact
           component={() => (
-            <EventsList isLoggedIn={isLoggedIn} events={events} />
+            <EventsList
+              isLoggedIn={isLoggedIn}
+              events={events}
+              eventClickHandler={eventClickHandler}
+            />
           )}
         />
         <Route path="/add" exact component={AddEvent} />

@@ -1,10 +1,10 @@
 import React from "react";
-
+import "./LogoutButton.css";
 const LogoutButton = ({ isLoggedOut, signOut }) => {
   console.log(isLoggedOut);
   if (isLoggedOut) {
     return (
-      <div>
+      <div className="logoutButton">
         <button onClick={signOut}>Logout</button>
       </div>
     );

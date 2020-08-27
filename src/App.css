@@ -29,8 +29,12 @@
 }
 .navList {
   list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 1rem 2rem;
 }
-.navList li {
+.navList li > a {
   color: #282c34;
   text-decoration: none;
 }
