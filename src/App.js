@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
+import { BrowserRouter, Route, Link } from "react-router-dom";
 import LoginButton from "./components/LoginButton";
 import LogoutButton from "./components/LogoutButton";
 import EventsList from "./components/EventsList";
+import AddEvent from "./components/AddEvent";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -86,11 +88,32 @@ function App() {
   useEffect(gapiLoad, []);
 
   return (
-    <div className="App">
-      <LoginButton isLoggedIn={isLoggedIn} signIn={signIn} />
-      <LogoutButton isLoggedOut={isLoggedOut} signOut={signOut} />
-      <EventsList isLoggedIn={isLoggedIn} events={events} />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <header>
+          <nav>
+            <ul className="navList">
+              <li>
+                <Link to="/add">Add</Link>
+              </li>
+              <li>
+                <Link to="/list">Home</Link>
+              </li>
+            </ul>
+          </nav>
+          <LoginButton isLoggedIn={isLoggedIn} signIn={signIn} />
+          <LogoutButton isLoggedOut={isLoggedOut} signOut={signOut} />
+        </header>
+        <Route
+          path="/list"
+          exact
+          component={() => (
+            <EventsList isLoggedIn={isLoggedIn} events={events} />
+          )}
+        />
+        <Route path="/add" exact component={AddEvent} />
+      </div>
+    </BrowserRouter>
   );
 }
 
