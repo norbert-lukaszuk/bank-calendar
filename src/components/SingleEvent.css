@@ -1,0 +1,9 @@
+.singleEvent {
+  width: 40%;
+  background-color: #33658a;
+  margin: 10px auto;
+  padding: 1rem 0;
+  border-radius: 15px;
+  color: #f6ae2d;
+  font-family: sans-serif;
+}

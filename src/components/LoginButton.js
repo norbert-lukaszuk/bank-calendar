@@ -1,8 +1,6 @@
 import React from "react";
 
 const LoginButton = ({ isLoggedIn, signIn }) => {
-  const gapi = window.gapi;
-
   console.log(isLoggedIn);
   if (isLoggedIn) {
     return (

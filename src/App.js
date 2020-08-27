@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import LoginButton from "./components/LoginButton";
 import LogoutButton from "./components/LogoutButton";
-import EventsList from "./components/EventsList";
+import SingleEvent from "./components/SingleEvent";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -83,13 +83,31 @@ function App() {
         setEvents(events);
       });
   };
+  const EventClickHandler = (eventIndex) => {
+    console.log(eventIndex);
+    const eventsToEdit = [...events];
+    eventsToEdit.splice(eventIndex, 1);
+    setEvents(eventsToEdit);
+  };
   useEffect(gapiLoad, []);
 
   return (
     <div className="App">
       <LoginButton isLoggedIn={isLoggedIn} signIn={signIn} />
       <LogoutButton isLoggedOut={isLoggedOut} signOut={signOut} />
-      <EventsList isLoggedIn={isLoggedIn} events={events} />
+      {events.map((event, index) => {
+        if (!isLoggedIn) {
+          return (
+            <SingleEvent
+              event={event}
+              key={index}
+              EventClickHandler={() => EventClickHandler(index)}
+            />
+          );
+        } else {
+          return null;
+        }
+      })}
     </div>
   );
 }
