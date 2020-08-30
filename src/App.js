@@ -97,21 +97,23 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <header>
-          <LoginButton isLoggedIn={isLoggedIn} signIn={signIn} />
-          <LogoutButton isLoggedOut={isLoggedOut} signOut={signOut} />
           <nav>
             <ul className="navList">
+              <li>
+                <LoginButton isLoggedIn={isLoggedIn} signIn={signIn} />
+                <LogoutButton isLoggedOut={isLoggedOut} signOut={signOut} />
+              </li>
               <li>
                 <Link to="/add">Add</Link>
               </li>
               <li>
-                <Link to="/list">Home</Link>
+                <Link to="/">Home</Link>
               </li>
             </ul>
           </nav>
         </header>
         <Route
-          path="/list"
+          path="/"
           exact
           component={() => (
             <EventsList

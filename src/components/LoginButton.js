@@ -5,7 +5,7 @@ const LoginButton = ({ isLoggedIn, signIn }) => {
   if (isLoggedIn) {
     return (
       <div className="loginButton">
-        <button onClick={signIn}>Login</button>
+        <span onClick={signIn}>Login</span>
       </div>
     );
   } else {

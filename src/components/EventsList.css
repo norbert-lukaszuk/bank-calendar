@@ -1,9 +1,9 @@
 .singleEvent {
-  width: 40%;
-  background-color: #33658a;
+  width: 90%;
+  background: linear-gradient(#52b788, #74c69d);
   margin: 10px auto;
   padding: 1rem 0;
   border-radius: 15px;
-  color: #f6ae2d;
+  color: #081c15;
   font-family: sans-serif;
 }

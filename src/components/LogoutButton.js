@@ -5,7 +5,7 @@ const LogoutButton = ({ isLoggedOut, signOut }) => {
   if (isLoggedOut) {
     return (
       <div className="logoutButton">
-        <button onClick={signOut}>Logout</button>
+        <span onClick={signOut}>Logout</span>
       </div>
     );
   } else {
