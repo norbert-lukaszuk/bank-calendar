@@ -86,7 +86,6 @@ function App() {
       });
   };
   const eventClickHandler = (eventIndex) => {
-    console.log(eventIndex);
     const newEvents = [...events];
     newEvents.splice(eventIndex, 1);
     setEvents(newEvents);

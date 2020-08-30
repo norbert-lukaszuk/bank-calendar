@@ -1,9 +1,24 @@
 .singleEvent {
   width: 90%;
+  height: 108px;
   background: linear-gradient(#52b788, #74c69d);
   margin: 10px auto;
-  padding: 1rem 0;
-  border-radius: 15px;
+  /* padding: 1rem 0; */
+  border-radius: 35px 15px 0 15px;
   color: #081c15;
-  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.descriptionContainer {
+  width: 80%;
+}
+.arrowContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-right-radius: 10px;
+  width: 20%;
+  height: 100%;
+  background: linear-gradient(#7400b8, #6930c3);
 }
