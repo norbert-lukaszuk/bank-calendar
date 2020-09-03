@@ -15,3 +15,6 @@
   border: none;
   background: linear-gradient(#e85d04, #f48c06);
 }
+.datePicker {
+  width: 250px;
+}
