@@ -23,15 +23,12 @@ const AddEvent = () => {
       <form onSubmit={submitHandler} className="addEvent__form">
         <CategorieSelect categories={categories} />
         <input type="text" placeholder="Event title" />
-        <input type="text" placeholder="amount" />
+        <input type="text" placeholder="Amount" />
         <TextField
           id="date"
           label="Paymant due"
           type="date"
           defaultValue={new Date().toISOString().slice(0, 10)}
-          // InputLabelProps={{
-          //   shrink: true,
-          // }}
           className="datePicker"
         />
         <button type="submit">

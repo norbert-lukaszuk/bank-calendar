@@ -5,6 +5,7 @@
 }
 .categorieHeader {
   display: inline;
+  border-radius: 10px;
 }
 .dropdownArowIcon {
   margin: 0 10px;

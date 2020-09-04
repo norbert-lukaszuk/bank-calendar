@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import "./CategoriesSelect.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowCircleDown } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowCircleDown,
+  faArrowAltCircleUp,
+  faArrowCircleUp,
+} from "@fortawesome/free-solid-svg-icons";
 const CategorieSelect = ({ categories }) => {
   const [show, setShow] = useState(false);
   const [categorieSelected, setCategoriesSelected] = useState();
@@ -15,7 +19,7 @@ const CategorieSelect = ({ categories }) => {
       <div onClick={() => setShow(!show)} className="categoriesDropdown">
         <h3 className="categorieHeader">Catergories</h3>
         <FontAwesomeIcon
-          icon={faArrowCircleDown}
+          icon={faArrowCircleUp}
           size="1x"
           className="dropdownArowIcon"
         />
@@ -37,7 +41,11 @@ const CategorieSelect = ({ categories }) => {
     return (
       <div onClick={() => setShow(!show)} className="categoriesDropdown">
         <h3 className="categorieHeader">Catergories</h3>
-        <FontAwesomeIcon icon={faArrowCircleDown} size="1x" />
+        <FontAwesomeIcon
+          icon={faArrowCircleDown}
+          size="1x"
+          className="dropdownArowIcon"
+        />
       </div>
     );
   }
