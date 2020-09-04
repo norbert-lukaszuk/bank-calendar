@@ -26,7 +26,7 @@ const AddEvent = () => {
         <input type="text" placeholder="amount" />
         <TextField
           id="date"
-          // label="Birthday"
+          label="Paymant due"
           type="date"
           defaultValue={new Date().toISOString().slice(0, 10)}
           // InputLabelProps={{

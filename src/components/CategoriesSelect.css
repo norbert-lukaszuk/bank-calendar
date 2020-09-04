@@ -1,0 +1,11 @@
+.categoriesDropdown {
+  cursor: pointer;
+  background: linear-gradient(#74c69d, #b7e4c7);
+  padding: 10px 20px;
+}
+.categorieHeader {
+  display: inline;
+}
+.dropdownArowIcon {
+  margin: 0 10px;
+}
