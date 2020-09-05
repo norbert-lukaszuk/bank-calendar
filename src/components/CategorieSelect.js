@@ -40,12 +40,13 @@ const CategorieSelect = ({ categories }) => {
   } else {
     return (
       <div onClick={() => setShow(!show)} className="categoriesDropdown">
-        <h3 className="categorieHeader">Catergories</h3>
+        <h3 className="categorieHeader">Catergorie selected</h3>
         <FontAwesomeIcon
           icon={faArrowCircleDown}
           size="1x"
           className="dropdownArowIcon"
         />
+        <h3>{categorieSelected}</h3>
       </div>
     );
   }

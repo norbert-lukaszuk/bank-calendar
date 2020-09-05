@@ -95,7 +95,8 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <header>
+        <header className="header">
+          <div className="mainLogo">Logo</div>
           <nav>
             <ul className="navList">
               <li>
