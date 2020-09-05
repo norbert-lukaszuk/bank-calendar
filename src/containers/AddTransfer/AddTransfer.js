@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Aux from "../../hoc/Aux";
+import Aux from "../../components/wraper";
 import CategoriesList from "../../components/CategoriesList";
 
 function AddTransfer() {
