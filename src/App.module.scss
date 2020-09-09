@@ -1,0 +1,34 @@
+.appHeader {
+  text-align: center;
+}
+.addTransferForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.categories {
+  width: 85%;
+
+  &__clickOn {
+    cursor: pointer;
+    text-align: center;
+    font-size: 1.25rem;
+    &Icon {
+      padding: 0 10px;
+    }
+  }
+  &List {
+    margin: 0;
+    padding: 0;
+  }
+}
+.listItem {
+  list-style: none;
+  margin: 10px 0;
+  padding: 8px;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #bcb8b1;
+}

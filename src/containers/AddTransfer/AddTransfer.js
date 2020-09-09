@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Aux from "../../components/wraper";
 import CategoriesList from "../../components/CategoriesList";
+import classes from "../../App.module.scss";
 
 function AddTransfer() {
   const [showCategories, setShowCategories] = useState(false);
@@ -22,7 +23,7 @@ function AddTransfer() {
   ];
   return (
     <Aux>
-      <form>
+      <form className={classes.addTransferForm}>
         <CategoriesList
           categoriesList={categoriesList}
           categoryItemClickHandler={categoryItemClickHandler}
