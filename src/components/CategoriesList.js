@@ -6,6 +6,7 @@ import {
   faChevronUp,
   faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 const CategoriesList = ({ categoriesList, categoryItemClickHandler }) => {
   const [categoriesShow, setCategoriesShow] = useState(true);
   if (categoriesShow) {
@@ -26,17 +27,18 @@ const CategoriesList = ({ categoriesList, categoryItemClickHandler }) => {
         <ul className={classes.categoriesList}>
           {categoriesList.map((item) => {
             return (
-              <li
-                className={classes.listItem}
-                onClick={(e) => {
-                  categoryItemClickHandler(e.target.textContent);
-                  setCategoriesShow(false);
-                }}
-                key={item}
-              >
-                {item}
-                <FontAwesomeIcon icon={faChevronRight} color="#bcb8b1" />
-              </li>
+              <Link to={"/add/details/" + item} key={item}>
+                <li
+                  className={classes.listItem}
+                  onClick={(e) => {
+                    categoryItemClickHandler(e.target.textContent);
+                    setCategoriesShow(false);
+                  }}
+                >
+                  {item}
+                  <FontAwesomeIcon icon={faChevronRight} color="#bcb8b1" />
+                </li>
+              </Link>
             );
           })}
         </ul>
