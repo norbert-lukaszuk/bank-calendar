@@ -10,7 +10,11 @@ const CategoriesList = ({ categoriesList }) => {
       <ul className={classes.categoriesList}>
         {categoriesList.map((item) => {
           return (
-            <Link to={"/add/details/" + item} key={item}>
+            <Link
+              to={"/add/details/" + item}
+              key={item}
+              className={classes.categoriesList__link}
+            >
               <li className={classes.listItem}>
                 {item}
                 <FontAwesomeIcon icon={faChevronRight} color="#bcb8b1" />
