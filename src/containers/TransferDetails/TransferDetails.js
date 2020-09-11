@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import classes from "../../App.module.scss";
 const TransferDetails = (props) => {
   const categorie = props.match.params.cat;
   const [amount, setAmount] = useState("");
@@ -8,11 +8,11 @@ const TransferDetails = (props) => {
     e.preventDefault();
   };
   return (
-    <div>
+    <div className={classes.transferDetails}>
       <h4>{categorie}</h4>
       <h4>{title}</h4>
       <h4>{amount}</h4>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={classes.transferDetails__form}>
         <input
           type="text"
           id="title"
