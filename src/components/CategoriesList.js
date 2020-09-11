@@ -9,59 +9,29 @@ import {
 import { Link } from "react-router-dom";
 const CategoriesList = ({ categoriesList, categoryItemClickHandler }) => {
   const [categoriesShow, setCategoriesShow] = useState(true);
-  if (categoriesShow) {
-    return (
-      <div className={classes.categories}>
-        <h4
-          className={classes.categories__clickOn}
-          onClick={() => {
-            setCategoriesShow(!categoriesShow);
-          }}
-        >
-          Categories
-          <FontAwesomeIcon
-            icon={faChevronUp}
-            className={classes.categories__clickOnIcon}
-          />
-        </h4>
-        <ul className={classes.categoriesList}>
-          {categoriesList.map((item) => {
-            return (
-              <Link to={"/add/details/" + item} key={item}>
-                <li
-                  className={classes.listItem}
-                  onClick={(e) => {
-                    categoryItemClickHandler(e.target.textContent);
-                    setCategoriesShow(false);
-                  }}
-                >
-                  {item}
-                  <FontAwesomeIcon icon={faChevronRight} color="#bcb8b1" />
-                </li>
-              </Link>
-            );
-          })}
-        </ul>
-      </div>
-    );
-  } else {
-    return (
-      <div className={classes.categories}>
-        <h4
-          className={classes.categories__clickOn}
-          onClick={() => {
-            setCategoriesShow(!categoriesShow);
-          }}
-        >
-          Categories
-          <FontAwesomeIcon
-            icon={faChevronDown}
-            className={classes.categories__clickOnIcon}
-          />
-        </h4>
-      </div>
-    );
-  }
+  return (
+    <div className={classes.categories}>
+      <h4 className={classes.categories__clickOn}>Categories</h4>
+      <ul className={classes.categoriesList}>
+        {categoriesList.map((item) => {
+          return (
+            <Link to={"/add/details/" + item} key={item}>
+              <li
+                className={classes.listItem}
+                onClick={(e) => {
+                  categoryItemClickHandler(e.target.textContent);
+                  setCategoriesShow(false);
+                }}
+              >
+                {item}
+                <FontAwesomeIcon icon={faChevronRight} color="#bcb8b1" />
+              </li>
+            </Link>
+          );
+        })}
+      </ul>
+    </div>
+  );
 };
 
 export default CategoriesList;
