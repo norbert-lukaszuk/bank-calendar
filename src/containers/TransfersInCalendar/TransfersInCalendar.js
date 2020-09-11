@@ -20,9 +20,6 @@ const TransfersInCalendar = ({ isSignedIn }) => {
 
     return (
       <div>
-        {events.map((ev) => {
-          return <p key={ev.id}>{ev.created}</p>;
-        })}
         <button onClick={() => gapi.auth2.getAuthInstance().signOut()}>
           Sign Out
         </button>
