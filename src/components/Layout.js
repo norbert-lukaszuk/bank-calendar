@@ -4,6 +4,7 @@ import { BrowserRouter, Route, NavLink } from "react-router-dom";
 import AddTransfer from "../containers/AddTransfer/AddTransfer";
 import TransferDetails from "../containers/TransferDetails/TransferDetails";
 import TransfersInCalendar from "../containers/TransfersInCalendar/TransfersInCalendar";
+import EventDetails from "../containers/EventDetails/EventDetails";
 import classes from "../App.module.scss";
 
 const Layout = (props) => {
@@ -97,6 +98,7 @@ const Layout = (props) => {
           )}
         />
         <Route path="/add/details/:cat" exact component={TransferDetails} />
+        <Route path="/event/:id" exact component={EventDetails} />
       </Aux>
     </BrowserRouter>
   );
