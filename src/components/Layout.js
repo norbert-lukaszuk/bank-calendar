@@ -5,8 +5,10 @@ import AddTransfer from "../containers/AddTransfer/AddTransfer";
 import TransferDetails from "../containers/TransferDetails/TransferDetails";
 import TransfersInCalendar from "../containers/TransfersInCalendar/TransfersInCalendar";
 import classes from "../App.module.scss";
+
 const Layout = (props) => {
   const [gapiSignedIn, setGapiSignedIn] = useState(false);
+  const [events, setEvents] = useState([]);
   const gapi = window.gapi;
   const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
   const API_KEY = process.env.REACT_APP_API_KEY;
@@ -14,6 +16,7 @@ const Layout = (props) => {
     "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest",
   ];
   const SCOPES = "https://www.googleapis.com/auth/calendar.events";
+  console.log(events);
   const gapiLoad = () => {
     gapi.load("client:auth2", () => {
       gapi.client
@@ -39,7 +42,27 @@ const Layout = (props) => {
         });
     });
   };
+  const getEventsFromCalendar = () => {
+    if (gapiSignedIn) {
+      gapi.client.calendar.events
+        .list({
+          calendarId: "primary",
+          timeMin: new Date().toISOString(),
+          showDeleted: false,
+          singleEvents: true,
+          maxResults: 15,
+          orderBy: "startTime",
+        })
+        .then((response) => {
+          const events = response.result.items;
+          setEvents(events);
+        });
+    } else {
+      setEvents([]);
+    }
+  };
   useEffect(gapiLoad, []);
+  useEffect(getEventsFromCalendar, [gapiSignedIn]);
   return (
     <BrowserRouter>
       <Aux>
@@ -69,7 +92,9 @@ const Layout = (props) => {
         <Route
           path="/"
           exact
-          component={() => <TransfersInCalendar isSignedIn={gapiSignedIn} />}
+          component={() => (
+            <TransfersInCalendar isSignedIn={gapiSignedIn} events={events} />
+          )}
         />
         <Route path="/add/details/:cat" exact component={TransferDetails} />
       </Aux>

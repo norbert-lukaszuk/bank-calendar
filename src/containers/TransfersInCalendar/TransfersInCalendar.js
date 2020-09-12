@@ -1,28 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import EventsList from "../../components/EventsList";
 const gapi = window.gapi;
-const TransfersInCalendar = ({ isSignedIn }) => {
+const TransfersInCalendar = ({ isSignedIn, events }) => {
   if (isSignedIn) {
-    let events;
-    gapi.client.calendar.events
-      .list({
-        calendarId: "primary",
-        timeMin: new Date().toISOString(),
-        showDeleted: false,
-        singleEvents: true,
-        maxResults: 15,
-        orderBy: "startTime",
-      })
-      .then((response) => {
-        events = response.result.items;
-        console.log("EVENTS: ", events);
-        //   setEvents(events);
-      });
-
     return (
       <div>
         <button onClick={() => gapi.auth2.getAuthInstance().signOut()}>
           Sign Out
         </button>
+        <EventsList events={events} />
       </div>
     );
   } else {
