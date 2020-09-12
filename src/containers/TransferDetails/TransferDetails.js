@@ -12,6 +12,32 @@ const TransferDetails = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(title, amount, typeof date);
+    console.log(`${date}T14:30:00+02:00`);
+    gapi.client.calendar.events
+      .insert({
+        calendarId: "afqpdpcef0fvv5o39r3rvujte0@group.calendar.google.com",
+        resource: {
+          summary: categorie,
+          description: title,
+          start: {
+            // dateTime: "2020-09-23T13:00:00+02:00",
+            dateTime: `${date}T13:00:00+02:00`,
+          },
+          end: {
+            // dateTime: "2020-09-23T14:30:00+02:00",
+            dateTime: `${date}T14:30:00+02:00`,
+          },
+          reminders: {
+            useDefault: false,
+            overrides: [
+              { method: "popup", minutes: 120 },
+              { method: "popup", minutes: 240 },
+            ],
+          },
+        },
+      })
+      .then((err) => console.log(err));
   };
   return (
     <div className={classes.transferDetails}>
