@@ -47,11 +47,13 @@ const Layout = (props) => {
     if (gapiSignedIn) {
       gapi.client.calendar.events
         .list({
-          calendarId: "primary",
+          // calendarId: "primary",
+          calendarId: "afqpdpcef0fvv5o39r3rvujte0@group.calendar.google.com",
           timeMin: new Date().toISOString(),
+          // timeMin: "2020-10-01T00:00:00.00Z",
           showDeleted: false,
           singleEvents: true,
-          maxResults: 15,
+          maxResults: 25,
           orderBy: "startTime",
         })
         .then((response) => {
@@ -83,7 +85,7 @@ const Layout = (props) => {
               activeClassName={classes.navigationList__item__active}
               to="/"
             >
-              <li>List</li>
+              <li>Home</li>
             </NavLink>
           </ul>
         </nav>

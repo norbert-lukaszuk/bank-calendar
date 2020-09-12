@@ -6,7 +6,7 @@ const EventDetails = (props) => {
   const getEvent = () => {
     gapi.client.calendar.events
       .get({
-        calendarId: "primary",
+        calendarId: "afqpdpcef0fvv5o39r3rvujte0@group.calendar.google.com",
         eventId: props.match.params.id,
       })
       .then((resp) => {
