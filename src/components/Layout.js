@@ -96,7 +96,11 @@ const Layout = (props) => {
           path="/"
           exact
           component={() => (
-            <TransfersInCalendar isSignedIn={gapiSignedIn} events={events} />
+            <TransfersInCalendar
+              isSignedIn={gapiSignedIn}
+              events={events}
+              getEventsFromCalendar={getEventsFromCalendar}
+            />
           )}
         />
         <Route path="/add/details/:cat" exact component={TransferDetails} />

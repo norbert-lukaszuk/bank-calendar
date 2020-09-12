@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import EventsList from "../../components/EventsList";
 const gapi = window.gapi;
-const TransfersInCalendar = ({ isSignedIn, events }) => {
+const TransfersInCalendar = ({ isSignedIn, events, getEventsFromCalendar }) => {
+  useEffect(getEventsFromCalendar, [events]);
   if (isSignedIn) {
     return (
       <div>
