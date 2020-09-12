@@ -9,6 +9,7 @@ const TransferDetails = (props) => {
   const [amount, setAmount] = useState("");
   const [title, setTitle] = useState("");
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
+  const [linkToEvent, setLinkToEvent] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,7 +38,10 @@ const TransferDetails = (props) => {
           },
         },
       })
-      .then((err) => console.log(err));
+      .then((resp) => {
+        console.log(resp);
+        setLinkToEvent(resp.result.htmlLink);
+      });
   };
   return (
     <div className={classes.transferDetails}>
@@ -58,7 +62,6 @@ const TransferDetails = (props) => {
         <input
           type="text"
           id="title"
-          // placeholder="Title"
           onChange={(e) => setTitle(e.target.value)}
           value={title}
         />
@@ -66,12 +69,12 @@ const TransferDetails = (props) => {
         <input
           type="number"
           id="amount"
-          // placeholder="Amount"
           onChange={(e) => setAmount(e.target.value)}
           value={amount}
         />
         <button type="submit">Add transfer</button>
       </form>
+      {linkToEvent ? <a href={linkToEvent}>See event in calendar</a> : null}
     </div>
   );
 };
