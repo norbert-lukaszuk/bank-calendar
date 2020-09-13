@@ -4,12 +4,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 const gapi = window.gapi;
+
 const TransferDetails = (props) => {
   const categorie = props.match.params.cat;
   const [amount, setAmount] = useState("");
   const [title, setTitle] = useState("");
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
   const [linkToEvent, setLinkToEvent] = useState("");
+  console.log(props.location.stata);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,7 +41,8 @@ const TransferDetails = (props) => {
         },
       })
       .then((resp) => {
-        console.log(resp);
+        console.log(resp.result);
+        // setNewEvents(resp.result);
         setLinkToEvent(resp.result.htmlLink);
       });
   };

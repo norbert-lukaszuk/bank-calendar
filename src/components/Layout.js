@@ -18,6 +18,7 @@ const Layout = (props) => {
   ];
   const SCOPES = "https://www.googleapis.com/auth/calendar.events";
   console.log(events);
+
   const gapiLoad = () => {
     gapi.load("client:auth2", () => {
       gapi.client
@@ -91,16 +92,16 @@ const Layout = (props) => {
         </nav>
 
         {/* {props.children} */}
-        <Route path="/add" exact component={AddTransfer} />
+        <Route
+          path="/add"
+          exact
+          component={() => <AddTransfer events={events} />}
+        />
         <Route
           path="/"
           exact
           component={() => (
-            <TransfersInCalendar
-              isSignedIn={gapiSignedIn}
-              events={events}
-              getEventsFromCalendar={getEventsFromCalendar}
-            />
+            <TransfersInCalendar isSignedIn={gapiSignedIn} events={events} />
           )}
         />
         <Route path="/add/details/:cat" exact component={TransferDetails} />

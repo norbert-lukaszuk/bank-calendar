@@ -3,7 +3,8 @@ import classes from "../App.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-const CategoriesList = ({ categoriesList }) => {
+const CategoriesList = ({ categoriesList, events }) => {
+  console.log("CategoriesList", events);
   return (
     <div className={classes.categories}>
       <h4 className={classes.categories__clickOn}>Categories</h4>
@@ -11,9 +12,13 @@ const CategoriesList = ({ categoriesList }) => {
         {categoriesList.map((item) => {
           return (
             <Link
-              to={"/add/details/" + item}
+              to={{
+                pathname: `/add/details/"${item}`,
+                state: events,
+              }}
               key={item}
               className={classes.categoriesList__link}
+              // eventsUpdate={eventsUpdate}
             >
               <li className={classes.listItem}>
                 {item}
