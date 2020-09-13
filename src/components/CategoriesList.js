@@ -3,8 +3,7 @@ import classes from "../App.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-const CategoriesList = ({ categoriesList, events }) => {
-  console.log("CategoriesList", events);
+const CategoriesList = ({ categoriesList }) => {
   return (
     <div className={classes.categories}>
       <h4 className={classes.categories__clickOn}>Categories</h4>
@@ -13,12 +12,10 @@ const CategoriesList = ({ categoriesList, events }) => {
           return (
             <Link
               to={{
-                pathname: `/add/details/"${item}`,
-                state: events,
+                pathname: `/add/details/${item}`,
               }}
               key={item}
               className={classes.categoriesList__link}
-              // eventsUpdate={eventsUpdate}
             >
               <li className={classes.listItem}>
                 {item}

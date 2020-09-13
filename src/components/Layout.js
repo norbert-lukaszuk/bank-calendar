@@ -92,11 +92,7 @@ const Layout = (props) => {
         </nav>
 
         {/* {props.children} */}
-        <Route
-          path="/add"
-          exact
-          component={() => <AddTransfer events={events} />}
-        />
+        <Route path="/add" exact component={AddTransfer} />
         <Route
           path="/"
           exact
@@ -104,7 +100,16 @@ const Layout = (props) => {
             <TransfersInCalendar isSignedIn={gapiSignedIn} events={events} />
           )}
         />
-        <Route path="/add/details/:cat" exact component={TransferDetails} />
+        <Route
+          path="/add/details/:cat"
+          exact
+          render={(props) => (
+            <TransferDetails
+              {...props}
+              getEventsFromCalendar={getEventsFromCalendar}
+            />
+          )}
+        />
         <Route path="/event/:id" exact component={EventDetails} />
       </Aux>
     </BrowserRouter>

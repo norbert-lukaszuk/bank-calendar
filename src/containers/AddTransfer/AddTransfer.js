@@ -3,7 +3,7 @@ import Aux from "../../components/wraper";
 import CategoriesList from "../../components/CategoriesList";
 import classes from "../../App.module.scss";
 
-function AddTransfer({ events }) {
+function AddTransfer() {
   const categoriesList = [
     "Czynsz",
     "Internet",
@@ -16,7 +16,7 @@ function AddTransfer({ events }) {
   return (
     <Aux>
       <form className={classes.addTransferForm}>
-        <CategoriesList categoriesList={categoriesList} events={events} />
+        <CategoriesList categoriesList={categoriesList} />
       </form>
     </Aux>
   );
