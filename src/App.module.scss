@@ -19,6 +19,16 @@
     }
   }
 }
+.eventsFromCalendar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  &__event {
+    text-decoration: none;
+    color: black;
+  }
+}
 .addTransferForm {
   display: flex;
   justify-content: center;

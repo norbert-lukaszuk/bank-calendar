@@ -1,12 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import classes from "../App.module.scss";
 const EventsList = ({ events }) => {
   if (events) {
     return (
       <div>
         {events.map((element) => {
           return (
-            <Link to={"/event/" + element.id} key={element.id}>
+            <Link
+              className={classes.eventsFromCalendar__event}
+              to={"/event/" + element.id}
+              key={element.id}
+            >
               <p>{element.summary}</p>;
             </Link>
           );
