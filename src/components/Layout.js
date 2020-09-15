@@ -10,6 +10,7 @@ import classes from "../App.module.scss";
 const Layout = (props) => {
   const [gapiSignedIn, setGapiSignedIn] = useState(false);
   const [events, setEvents] = useState([]);
+  const [categories, setCategories] = useState([]);
   const gapi = window.gapi;
   const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
   const API_KEY = process.env.REACT_APP_API_KEY;
@@ -20,16 +21,24 @@ const Layout = (props) => {
   const db = window.firebase.firestore();
   const auth = window.firebase.auth();
   console.log(events);
-  // test firestore
-  db.collection("categoriesReact")
-    .get()
-    .then((resp) =>
-      resp.forEach((doc) => {
-        console.log(doc.data());
-      })
-    )
-    .catch((err) => console.log(err));
+  console.log(categories);
 
+  // test firestore
+  const getArrayOfCategories = async () => {
+    const getCategories = async () => {
+      return db
+        .collection("categoriesReact")
+        .get()
+        .then((resp) =>
+          resp.docs.map((doc) => {
+            return doc.data().categorieName;
+          })
+        )
+        .catch((err) => console.log(err));
+    };
+    console.log(await getCategories());
+  };
+  useEffect(getArrayOfCategories(), []);
   const gapiLoad = () => {
     gapi.load("client:auth2", () => {
       gapi.client
