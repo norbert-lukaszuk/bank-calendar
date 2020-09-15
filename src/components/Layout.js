@@ -24,21 +24,22 @@ const Layout = (props) => {
   console.log(categories);
 
   // test firestore
-  const getArrayOfCategories = async () => {
-    const getCategories = async () => {
-      return db
-        .collection("categoriesReact")
-        .get()
-        .then((resp) =>
-          resp.docs.map((doc) => {
-            return doc.data().categorieName;
-          })
-        )
-        .catch((err) => console.log(err));
-    };
-    console.log(await getCategories());
+
+  const categoriesFromDB = () => {
+    db.collection("categoriesReact")
+      .get()
+      .then((resp) => {
+        let arr = [];
+        resp.docs.forEach((doc) => {
+          arr.push(doc.data().categorieName);
+        });
+        return arr;
+      })
+      .then((catArray) => setCategories(catArray))
+      .catch((err) => console.log(err));
   };
-  useEffect(getArrayOfCategories(), []);
+  useEffect(categoriesFromDB, []);
+
   const gapiLoad = () => {
     gapi.load("client:auth2", () => {
       gapi.client
