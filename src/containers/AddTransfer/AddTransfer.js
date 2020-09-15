@@ -4,17 +4,8 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
-function AddTransfer() {
-  const categoriesList = [
-    "Czynsz",
-    "Internet",
-    "Kredyt",
-    "Księgowość",
-    "Orange",
-    "Rachunki - gaz",
-    "Rachunki - prąd",
-  ];
-  const Categories = categoriesList.map((categorie) => {
+function AddTransfer({ categories }) {
+  const CategoriesList = categories.map((categorie) => {
     return (
       <Link
         to={{
@@ -35,7 +26,7 @@ function AddTransfer() {
       <h4 className={classes.categories__clickOn}>Categories</h4>
       <ul className={classes.categoriesList}>
         {/* <CategoriesList categoriesList={categoriesList} /> */}
-        {Categories}
+        {CategoriesList}
       </ul>
     </div>
   );

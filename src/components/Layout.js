@@ -113,7 +113,11 @@ const Layout = (props) => {
         </nav>
 
         {/* {props.children} */}
-        <Route path="/add" exact component={AddTransfer} />
+        <Route
+          path="/add"
+          exact
+          render={(props) => <AddTransfer {...props} categories={categories} />}
+        />
         <Route
           path="/"
           exact
