@@ -17,7 +17,18 @@ const Layout = (props) => {
     "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest",
   ];
   const SCOPES = "https://www.googleapis.com/auth/calendar.events";
+  const db = window.firebase.firestore();
+  const auth = window.firebase.auth();
   console.log(events);
+  // test firestore
+  db.collection("categoriesReact")
+    .get()
+    .then((resp) =>
+      resp.forEach((doc) => {
+        console.log(doc.data());
+      })
+    )
+    .catch((err) => console.log(err));
 
   const gapiLoad = () => {
     gapi.load("client:auth2", () => {
