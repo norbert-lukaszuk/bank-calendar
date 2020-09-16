@@ -7,6 +7,7 @@ const EventsList = ({ events }) => {
       <div>
         {events.map((element) => {
           console.log(element);
+          const sliceTo = element.description.indexOf("@");
           return (
             <Link
               className={classes.eventsFromCalendar__event}
@@ -14,6 +15,7 @@ const EventsList = ({ events }) => {
               key={element.id}
             >
               <p>{element.summary}</p>
+              <p>{element.description.slice(0, sliceTo)}</p>
               <p>{element.start.dateTime.slice(0, 10)}</p>
               <p>Reminders times </p>
               {element.reminders.overrides.map((reminder, index) => {

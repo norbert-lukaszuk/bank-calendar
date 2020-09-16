@@ -21,7 +21,7 @@ const TransferDetails = (props) => {
         calendarId: "afqpdpcef0fvv5o39r3rvujte0@group.calendar.google.com",
         resource: {
           summary: categorie,
-          description: title,
+          description: `${amount}.${title}`,
           start: {
             // dateTime: "2020-09-23T13:00:00+02:00",
             dateTime: `${date}T13:00:00+02:00`,
