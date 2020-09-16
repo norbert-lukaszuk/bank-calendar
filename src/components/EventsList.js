@@ -6,7 +6,7 @@ const EventsList = ({ events }) => {
     return (
       <div>
         {events.map((element) => {
-          console.log(element.reminders.overrides[0]);
+          console.log(element);
           return (
             <Link
               className={classes.eventsFromCalendar__event}
@@ -16,9 +16,9 @@ const EventsList = ({ events }) => {
               <p>{element.summary}</p>
               <p>{element.start.dateTime.slice(0, 10)}</p>
               <p>Reminders times </p>
-              {element.reminders.overrides.map((reminder) => {
+              {element.reminders.overrides.map((reminder, index) => {
                 return (
-                  <span key={reminder.method}>
+                  <span key={`${element.id}${index}`}>
                     {" "}
                     {Math.round(reminder.minutes / 60)} h
                   </span>

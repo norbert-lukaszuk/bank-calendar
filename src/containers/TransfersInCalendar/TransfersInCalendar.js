@@ -3,6 +3,7 @@ import EventsList from "../../components/EventsList";
 import classes from "../../App.module.scss";
 const gapi = window.gapi;
 const TransfersInCalendar = ({ isSignedIn, events }) => {
+  console.log(events);
   if (isSignedIn) {
     return (
       <div className={classes.eventsFromCalendar}>

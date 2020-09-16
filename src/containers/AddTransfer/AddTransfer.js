@@ -9,13 +9,13 @@ function AddTransfer({ categories }) {
     return (
       <Link
         to={{
-          pathname: `/add/details/${categorie}`,
+          pathname: `/add/details/${categorie.categorieName}`,
         }}
-        key={categorie}
+        key={categorie.id}
         className={classes.categoriesList__link}
       >
         <li className={classes.listItem}>
-          {categorie}
+          {categorie.categorieName}
           <FontAwesomeIcon icon={faChevronRight} color="#bcb8b1" />
         </li>
       </Link>

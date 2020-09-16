@@ -12,40 +12,38 @@ const Layout = (props) => {
   const [events, setEvents] = useState([]);
   const [categories, setCategories] = useState([]);
   const gapi = window.gapi;
-  const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
-  const API_KEY = process.env.REACT_APP_API_KEY;
   const DISCOVERY_DOCS = [
     "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest",
   ];
   const SCOPES = "https://www.googleapis.com/auth/calendar.events";
   const db = window.firebase.firestore();
-  const auth = window.firebase.auth();
+  // const auth = window.firebase.auth();
   console.log(events);
   console.log(categories);
 
   // test firestore
-
+  // get categories from firestore and put it in categories state
   const categoriesFromDB = () => {
     db.collection("categoriesReact")
       .get()
       .then((resp) => {
         let arr = [];
         resp.docs.forEach((doc) => {
-          arr.push(doc.data().categorieName);
+          // arr.push(doc.data().categorieName);
+          arr.push({ categorieName: doc.data().categorieName, id: doc.id });
         });
         return arr;
       })
       .then((catArray) => setCategories(catArray))
       .catch((err) => console.log(err));
   };
-  useEffect(categoriesFromDB, []);
-
+  // load google api client
   const gapiLoad = () => {
     gapi.load("client:auth2", () => {
       gapi.client
         .init({
-          apiKey: API_KEY,
-          clientId: CLIENT_ID,
+          apiKey: process.env.REACT_APP_API_KEY,
+          clientId: process.env.REACT_APP_CLIENT_ID,
           discoveryDocs: DISCOVERY_DOCS,
           scope: SCOPES,
         })
@@ -65,6 +63,7 @@ const Layout = (props) => {
         });
     });
   };
+  // get the events from calendar and put it in events state
   const getEventsFromCalendar = () => {
     if (gapiSignedIn) {
       gapi.client.calendar.events
@@ -86,6 +85,8 @@ const Layout = (props) => {
       setEvents([]);
     }
   };
+  // load gaopi client, categories, events when app is loading
+  useEffect(categoriesFromDB, []);
   useEffect(gapiLoad, []);
   useEffect(getEventsFromCalendar, [gapiSignedIn]);
   return (
