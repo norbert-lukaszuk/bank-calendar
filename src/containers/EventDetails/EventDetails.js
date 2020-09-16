@@ -4,6 +4,9 @@ const EventDetails = (props) => {
   const [event, setEvent] = useState();
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState(0);
+  const [eventId, setEventId] = useState("");
+  const [date, setDate] = useState("");
+  console.log("EventDetails -> date", date);
   // get the single event from calendar
   const getEvent = () => {
     gapi.client.calendar.events
@@ -17,6 +20,8 @@ const EventDetails = (props) => {
         setEvent(resp);
         setTitle(resp.result.description.slice(sliceFrom + 1));
         setAmount(parseFloat(resp.result.description.slice(0, sliceTo)));
+        setEventId(resp.result.id);
+        setDate(resp.result.start.dateTime);
       });
   };
   // handle submit
@@ -42,10 +47,16 @@ const EventDetails = (props) => {
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
         />
-
+        <input
+          type="date"
+          id="date"
+          defaultValue={date}
+          onChange={(e) => setDate(e.target.value)}
+        />
         <p>{event.result.summary}</p>
         <p>{event.result.start.dateTime.slice(0, 10)}</p>
         <p>Reminder {hours} houres before</p>
+        <button type="submit">Update</button>
       </form>
     );
   } else {
