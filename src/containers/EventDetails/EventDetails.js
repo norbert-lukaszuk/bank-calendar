@@ -3,6 +3,7 @@ const EventDetails = (props) => {
   const gapi = window.gapi;
   const [event, setEvent] = useState();
   const [title, setTitle] = useState("");
+  const [amount, setAmount] = useState(0);
   // get the single event from calendar
   const getEvent = () => {
     gapi.client.calendar.events
@@ -11,8 +12,11 @@ const EventDetails = (props) => {
         eventId: props.match.params.id,
       })
       .then((resp) => {
+        const sliceFrom = resp.result.description.indexOf("@");
+        const sliceTo = resp.result.description.indexOf(" ");
         setEvent(resp);
-        setTitle(resp.result.description);
+        setTitle(resp.result.description.slice(sliceFrom + 1));
+        setAmount(parseFloat(resp.result.description.slice(0, sliceTo)));
       });
   };
   // handle submit
@@ -31,6 +35,12 @@ const EventDetails = (props) => {
           onChange={(e) => {
             setTitle(e.target.value);
           }}
+        />
+        <input
+          type="number"
+          id="amount"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
         />
 
         <p>{event.result.summary}</p>
