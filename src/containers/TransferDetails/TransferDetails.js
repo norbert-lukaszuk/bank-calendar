@@ -68,7 +68,7 @@ const TransferDetails = (props) => {
           onChange={(e) => setTitle(e.target.value)}
           value={title}
         />
-        <label htmlFor="amount">Amanunt to transfer</label>
+        <label htmlFor="amount">Amanunt to transfer (zł)</label>
         <input
           type="number"
           id="amount"

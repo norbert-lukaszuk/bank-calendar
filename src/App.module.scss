@@ -96,6 +96,12 @@
         width: 100%;
       }
     }
+    & select {
+      margin: 10px 0;
+      border: none;
+      border-bottom: 1px solid #d8cebd;
+      font-size: 1.375rem;
+    }
     & label {
       margin-top: 15px;
     }

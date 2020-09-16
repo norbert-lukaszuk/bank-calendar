@@ -22,7 +22,6 @@ const EventDetails = (props) => {
         setTitle(resp.result.description.slice(sliceFrom + 1));
         setAmount(parseFloat(resp.result.description.slice(0, sliceTo)));
         setEventId(resp.result.id);
-        setDate(new Date(resp.result.start.dateTime));
       });
   };
   // handle submit
@@ -35,6 +34,14 @@ const EventDetails = (props) => {
       <div className={classes.transferDetails}>
         <h2>{event.result.summary}</h2>
         <form onSubmit={handleSubmit} className={classes.transferDetails__form}>
+          <label htmlFor="date">Date of payment</label>
+          <input
+            type="date"
+            id="date"
+            defaultValue={event.result.start.dateTime.slice(0, 10)}
+            onChange={(e) => setDate(e.target.value)}
+          />
+          <label htmlFor="title">Transfer title</label>
           <input
             type="text"
             id="title"
@@ -43,20 +50,20 @@ const EventDetails = (props) => {
               setTitle(e.target.value);
             }}
           />
+          <label htmlFor="amount">Amanunt to transfer (zł)</label>
+
           <input
             type="number"
             id="amount"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
           />
-          <input
-            type="date"
-            id="date"
-            defaultValue={event.result.start.dateTime.slice(0, 10)}
-            onChange={(e) => setDate(e.target.value)}
-          />
-          <p>{event.result.summary}</p>
-          <p>{event.result.start.dateTime.slice(0, 10)}</p>
+          <label htmlFor="reminders">Reminders</label>
+          <select name="reminders" id="reminders">
+            <option value={event.result.reminders.overrides[0].minutes}>
+              {event.result.reminders.overrides[0].minutes} min.
+            </option>
+          </select>
           <button type="submit">Update</button>
         </form>
       </div>
