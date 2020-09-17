@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import classes from "../../App.module.scss";
+
 const EventDetails = (props) => {
   const gapi = window.gapi;
   const [event, setEvent] = useState();
@@ -7,9 +8,16 @@ const EventDetails = (props) => {
   const [amount, setAmount] = useState(0);
   const [eventId, setEventId] = useState("");
   const [date, setDate] = useState("");
-  const [reminder, setReminder] = useState(null);
-  console.log("EventDetails -> reminders", reminder);
+  const [reminder1, setReminder1] = useState({});
+  console.log("EventDetails -> reminder1", reminder1);
   console.log("EventDetails -> event", event);
+  // set the reminders state
+  const handleReminderChange = (e) => {
+    const newReminder = { ...reminder1 };
+    // console.log(newReminder);
+    newReminder.minutes = parseInt(e.target.value);
+    setReminder1(newReminder);
+  };
   // get the single event from calendar
   const getEvent = () => {
     gapi.client.calendar.events
@@ -24,7 +32,7 @@ const EventDetails = (props) => {
         setTitle(resp.result.description.slice(sliceFrom + 1));
         setAmount(parseFloat(resp.result.description.slice(0, sliceTo)));
         setEventId(resp.result.id);
-        setReminder(resp.result.reminders.overrides[0].minutes);
+        setReminder1(resp.result.reminders.overrides[0]);
       });
   };
   // handle submit
@@ -65,14 +73,11 @@ const EventDetails = (props) => {
           <select
             name="reminders"
             id="reminders"
-            value={reminder}
-            onChange={(e) => setReminder(e.target.value)}
+            value={reminder1.minutes}
+            onChange={handleReminderChange}
           >
-            <option value={event.result.reminders.overrides[0].minutes}>
-              {reminder} min.
-            </option>
-            <option value="220">220</option>
-            <option value="320">320</option>
+            <option value="120">2h</option>
+            <option value="180">3h</option>
           </select>
           <button type="submit">Update</button>
         </form>
