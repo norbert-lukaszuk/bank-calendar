@@ -44,7 +44,7 @@ const EventDetails = (props) => {
         setReminder2(resp.result.reminders.overrides[1]);
       });
   };
-  // handle submit
+  // handle submit to update selected event
   const handleSubmit = (e) => {
     e.preventDefault();
     gapi.client.calendar.events
@@ -55,11 +55,9 @@ const EventDetails = (props) => {
           summary: event.result.summary,
           description: `${amount} zł@${title}`,
           start: {
-            // dateTime: "2020-09-23T13:00:00+02:00",
             dateTime: `${date}T13:00:00+02:00`,
           },
           end: {
-            // dateTime: "2020-09-23T14:30:00+02:00",
             dateTime: `${date}T14:30:00+02:00`,
           },
           reminders: {
@@ -73,7 +71,10 @@ const EventDetails = (props) => {
           },
         },
       })
-      .then((resp) => console.log(resp.result))
+      .then((resp) => {
+        console.log(resp.result);
+        props.getEventsFromCalendar();
+      })
       .catch((err) => console.error(err));
   };
   useEffect(getEvent, []);

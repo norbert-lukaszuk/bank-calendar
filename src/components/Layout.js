@@ -136,7 +136,16 @@ const Layout = (props) => {
             />
           )}
         />
-        <Route path="/event/:id" exact component={EventDetails} />
+        <Route
+          path="/event/:id"
+          exact
+          render={(props) => (
+            <EventDetails
+              {...props}
+              getEventsFromCalendar={getEventsFromCalendar}
+            />
+          )}
+        />
       </Aux>
     </BrowserRouter>
   );
