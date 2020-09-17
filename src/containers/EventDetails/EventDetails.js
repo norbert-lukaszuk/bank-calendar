@@ -9,15 +9,21 @@ const EventDetails = (props) => {
   const [eventId, setEventId] = useState("");
   const [date, setDate] = useState("");
   const [reminder1, setReminder1] = useState({});
+  const [reminder2, setReminder2] = useState({});
   console.log("EventDetails -> reminder1", reminder1);
+  console.log("EventDetails -> reminder2", reminder2);
   console.log("EventDetails -> event", event);
   // set the reminders state
-  const handleReminderChange = (e) => {
+  const handleReminder1Change = (e) => {
     const newReminder = { ...reminder1 };
-    // console.log(newReminder);
     newReminder.minutes = parseInt(e.target.value);
     setReminder1(newReminder);
   };
+  function handleReminder2Change(e) {
+    const newReminder = { ...reminder2 };
+    newReminder.minutes = parseInt(e.target.value);
+    setReminder2(newReminder);
+  }
   // get the single event from calendar
   const getEvent = () => {
     gapi.client.calendar.events
@@ -72,12 +78,21 @@ const EventDetails = (props) => {
           <label htmlFor="reminders">Reminders</label>
           <select
             name="reminders"
-            id="reminders"
+            id="reminder1"
             value={reminder1.minutes}
-            onChange={handleReminderChange}
+            onChange={handleReminder1Change}
           >
             <option value="120">2h</option>
             <option value="180">3h</option>
+          </select>
+          <select
+            name="reminders"
+            id="reminder2"
+            value={reminder2.minutes}
+            onChange={handleReminder2Change}
+          >
+            <option value="1440">1d</option>
+            <option value="2880">2d</option>
           </select>
           <button type="submit">Update</button>
         </form>
