@@ -8,6 +8,7 @@ const EventDetails = (props) => {
   const [amount, setAmount] = useState(0);
   const [eventId, setEventId] = useState("");
   const [date, setDate] = useState("");
+  console.log("EventDetails -> date", date);
   const [reminder1, setReminder1] = useState({});
   const [reminder2, setReminder2] = useState({});
   console.log("EventDetails -> reminder1", reminder1);
@@ -35,14 +36,46 @@ const EventDetails = (props) => {
         const sliceFrom = resp.result.description.indexOf("@");
         const sliceTo = resp.result.description.indexOf(" ");
         setEvent(resp);
+        setDate(resp.result.start.dateTime.slice(0, 10));
         setTitle(resp.result.description.slice(sliceFrom + 1));
         setAmount(parseFloat(resp.result.description.slice(0, sliceTo)));
         setEventId(resp.result.id);
         setReminder1(resp.result.reminders.overrides[0]);
+        setReminder2(resp.result.reminders.overrides[1]);
       });
   };
   // handle submit
-  const handleSubmit = () => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    gapi.client.calendar.events
+      .update({
+        calendarId: "afqpdpcef0fvv5o39r3rvujte0@group.calendar.google.com",
+        eventId: eventId,
+        resource: {
+          summary: event.result.summary,
+          description: `${amount} zł@${title}`,
+          start: {
+            // dateTime: "2020-09-23T13:00:00+02:00",
+            dateTime: `${date}T13:00:00+02:00`,
+          },
+          end: {
+            // dateTime: "2020-09-23T14:30:00+02:00",
+            dateTime: `${date}T14:30:00+02:00`,
+          },
+          reminders: {
+            useDefault: false,
+            overrides: [
+              reminder1,
+              reminder2,
+              // { method: "popup", minutes: 120 },
+              // { method: "popup", minutes: 240 },
+            ],
+          },
+        },
+      })
+      .then((resp) => console.log(resp.result))
+      .catch((err) => console.error(err));
+  };
   useEffect(getEvent, []);
   if (event) {
     console.log(event.result.start.dateTime);
