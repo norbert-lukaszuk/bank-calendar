@@ -7,6 +7,8 @@ const EventDetails = (props) => {
   const [amount, setAmount] = useState(0);
   const [eventId, setEventId] = useState("");
   const [date, setDate] = useState("");
+  const [reminder, setReminder] = useState(null);
+  console.log("EventDetails -> reminders", reminder);
   console.log("EventDetails -> event", event);
   // get the single event from calendar
   const getEvent = () => {
@@ -22,6 +24,7 @@ const EventDetails = (props) => {
         setTitle(resp.result.description.slice(sliceFrom + 1));
         setAmount(parseFloat(resp.result.description.slice(0, sliceTo)));
         setEventId(resp.result.id);
+        setReminder(resp.result.reminders.overrides[0].minutes);
       });
   };
   // handle submit
@@ -59,10 +62,17 @@ const EventDetails = (props) => {
             onChange={(e) => setAmount(e.target.value)}
           />
           <label htmlFor="reminders">Reminders</label>
-          <select name="reminders" id="reminders">
+          <select
+            name="reminders"
+            id="reminders"
+            value={reminder}
+            onChange={(e) => setReminder(e.target.value)}
+          >
             <option value={event.result.reminders.overrides[0].minutes}>
-              {event.result.reminders.overrides[0].minutes} min.
+              {reminder} min.
             </option>
+            <option value="220">220</option>
+            <option value="320">320</option>
           </select>
           <button type="submit">Update</button>
         </form>
