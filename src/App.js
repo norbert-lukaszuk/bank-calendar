@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import LoginButton from "./components/LoginButton";
@@ -110,6 +111,19 @@ function App() {
       })}
     </div>
   );
+=======
+import React, { Component } from "react";
+import Layout from "./components/Layout";
+
+export class App extends Component {
+  render() {
+    return (
+      <div>
+        <Layout />
+      </div>
+    );
+  }
+>>>>>>> freshStart
 }
 
 export default App;
