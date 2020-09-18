@@ -20,13 +20,20 @@
   }
 }
 .eventsFromCalendar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  padding: 0 10px;
   &__event {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     text-decoration: none;
     color: black;
+    background-color: #ff887c;
+    margin: 5px 0;
+    border-radius: 15px 0 15px 0;
+    & p {
+      margin: 3px;
+    }
   }
 }
 .addTransferForm {

@@ -26,7 +26,6 @@ const EventsList = ({ events }) => {
                   </span>
                 );
               })}
-              <hr />
             </Link>
           );
         })}
