@@ -1,18 +1,4 @@
 import React from "react";
-<<<<<<< HEAD
-import "./EventsList.css";
-const EventsList = ({ events, isLoggedIn }) => {
-  if (!isLoggedIn) {
-    const list = events.map((event) => {
-      return (
-        <div className="singleEvent" key={event.id}>
-          <h3>{event.summary}</h3>
-          <h5>{event.start.dateTime.slice(0, 10)}</h5>
-        </div>
-      );
-    });
-    return <div>{list}</div>;
-=======
 import { Link } from "react-router-dom";
 import classes from "../App.module.scss";
 const EventsList = ({ events }) => {
@@ -46,7 +32,6 @@ const EventsList = ({ events }) => {
         })}
       </div>
     );
->>>>>>> freshStart
   } else {
     return null;
   }
