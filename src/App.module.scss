@@ -49,17 +49,29 @@
   margin-top: 55px;
   &__event {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-    flex-direction: column;
     text-decoration: none;
     color: black;
-    background-color: #ff887c;
+    background-color: #e5e5e5;
     margin: 5px 0;
     border-radius: 15px 0 15px 0;
     & p {
       margin: 3px;
     }
+  }
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #e85d04;
+    box-shadow: 3px 4px 25px 0 black;
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    background-color: #c4c4c4;
   }
   & > h4 {
     margin-top: 80px;

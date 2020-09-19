@@ -9,24 +9,26 @@ const EventsList = ({ events }) => {
           console.log(element);
           const sliceTo = element.description.indexOf(" ");
           return (
-            <Link
-              className={classes.eventsFromCalendar__event}
-              to={"/event/" + element.id}
-              key={element.id}
-            >
-              <p>{element.summary}</p>
-              <p>{parseFloat(element.description.slice(0, sliceTo))}</p>
-              <p>{element.start.dateTime.slice(0, 10)}</p>
-              <p>Reminders times </p>
-              {element.reminders.overrides.map((reminder, index) => {
-                return (
-                  <span key={`${element.id}${index}`}>
-                    {" "}
-                    {Math.round(reminder.minutes / 60)} h
-                  </span>
-                );
-              })}
-            </Link>
+            <div className={classes.eventsFromCalendar__event} key={element.id}>
+              <span className={classes.eventsFromCalendar__icon}>
+                {element.summary[0]}
+              </span>
+              <Link to={"/event/" + element.id}>
+                <h4>{element.summary}</h4>
+                {/* <p>{element.summary}</p>
+                <p>{parseFloat(element.description.slice(0, sliceTo))}</p>
+                <p>{element.start.dateTime.slice(0, 10)}</p>
+                <p>Reminders times </p>
+                {element.reminders.overrides.map((reminder, index) => {
+                  return (
+                    <span key={`${element.id}${index}`}>
+                      {" "}
+                      {Math.round(reminder.minutes / 60)} h
+                    </span>
+                  );
+                })} */}
+              </Link>
+            </div>
           );
         })}
       </div>
