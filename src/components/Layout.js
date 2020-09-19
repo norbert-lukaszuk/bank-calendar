@@ -89,9 +89,14 @@ const Layout = (props) => {
       setEvents([]);
     }
   };
+  // click on bars to open sliding menu
   const barCLickHandler = (e) => {
     setShowMenu(!showMenu);
     console.log(e);
+  };
+  // click on backdrop to close sliding menu && passed it down to Backdrop component trough Navigation
+  const backdropClickHandler = () => {
+    setShowMenu(false);
   };
   // load gaopi client, categories, events when app is loading
   useEffect(categoriesFromDB, []);
@@ -106,7 +111,11 @@ const Layout = (props) => {
           onClick={barCLickHandler}
           className={classes.navigationButton}
         />
-        <Navigation showMenu={showMenu} />
+        <Navigation
+          showMenu={showMenu}
+          backdropClickHandler={backdropClickHandler}
+          gapiSignedIn={gapiSignedIn}
+        />
 
         {/* {props.children} */}
         <Route
