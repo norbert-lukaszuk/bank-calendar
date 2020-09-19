@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from "react";
 import Aux from "../components/wraper";
-import { BrowserRouter, Route, NavLink } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import AddTransfer from "../containers/AddTransfer/AddTransfer";
 import TransferDetails from "../containers/TransferDetails/TransferDetails";
 import TransfersInCalendar from "../containers/TransfersInCalendar/TransfersInCalendar";
 import EventDetails from "../containers/EventDetails/EventDetails";
 import classes from "../App.module.scss";
+import Navigation from "./Navigation";
 
 const Layout = (props) => {
   const [gapiSignedIn, setGapiSignedIn] = useState(false);
   const [events, setEvents] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [showMenu, setShowMenu] = useState(false);
   const gapi = window.gapi;
   const DISCOVERY_DOCS = [
     "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest",
@@ -85,6 +89,10 @@ const Layout = (props) => {
       setEvents([]);
     }
   };
+  const barCLickHandler = (e) => {
+    setShowMenu(!showMenu);
+    console.log(e);
+  };
   // load gaopi client, categories, events when app is loading
   useEffect(categoriesFromDB, []);
   useEffect(gapiLoad, []);
@@ -92,26 +100,13 @@ const Layout = (props) => {
   return (
     <BrowserRouter>
       <Aux>
-        <nav className={classes.navigation}>
-          <ul className={classes.navigationList}>
-            <NavLink
-              exact
-              className={classes.navigationList__item}
-              activeClassName={classes.navigationList__item__active}
-              to="/add"
-            >
-              <li>Add</li>
-            </NavLink>
-            <NavLink
-              exact
-              className={classes.navigationList__item}
-              activeClassName={classes.navigationList__item__active}
-              to="/"
-            >
-              <li>Home</li>
-            </NavLink>
-          </ul>
-        </nav>
+        <FontAwesomeIcon
+          icon={faBars}
+          size="2x"
+          onClick={barCLickHandler}
+          className={classes.navigationButton}
+        />
+        <Navigation showMenu={showMenu} />
 
         {/* {props.children} */}
         <Route

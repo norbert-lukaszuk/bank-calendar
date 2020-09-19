@@ -2,11 +2,25 @@
   text-align: center;
 }
 .navigation {
+  background-color: #cfd1d0;
+  width: 70%;
+  height: 100vh;
+  top: 0;
+  position: absolute;
+  transition: all ease-in-out 0.3s;
+  transform: translateX(-100%);
+  &Button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #e85d04;
+  }
   &List {
     list-style: none;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    flex-direction: column;
 
     &__item {
       padding: 15px;
