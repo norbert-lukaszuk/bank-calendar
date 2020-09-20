@@ -1,12 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import classes from "../App.module.scss";
+import DaysLeft from "./DaysLeft";
 const EventsList = ({ events }) => {
   if (events) {
     return (
       <div>
         {events.map((element) => {
           console.log(element);
+          const date = element.start.dateTime.slice(0, 10);
           const sliceTo = element.description.indexOf(" ");
           return (
             <div className={classes.eventsFromCalendar__event} key={element.id}>
@@ -28,6 +30,7 @@ const EventsList = ({ events }) => {
                   );
                 })} */}
               </Link>
+              <DaysLeft date={date} />
             </div>
           );
         })}

@@ -2,7 +2,7 @@
   text-align: center;
 }
 .navigation {
-  background-color: #cfd1d0;
+  background-color: #fbfffd;
   width: 70%;
   height: 100vh;
   top: 0;
@@ -56,8 +56,9 @@
     background-color: #e5e5e5;
     margin: 5px 0;
     border-radius: 15px 0 15px 0;
-    & p {
-      margin: 3px;
+    & a {
+      text-decoration: none;
+      color: #000000;
     }
   }
   &__icon {
@@ -67,7 +68,7 @@
     font-size: 20px;
     font-weight: bold;
     color: #e85d04;
-    box-shadow: 3px 4px 25px 0 black;
+    box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.25);
     border-radius: 50%;
     width: 42px;
     height: 42px;
@@ -85,6 +86,7 @@
 }
 .categories {
   width: 90%;
+  margin-top: 50px;
 
   &__clickOn {
     text-align: center;
@@ -115,6 +117,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-top: 50px;
   &__categorieWraper {
     width: 90%;
     border-bottom: 1px solid #bcb8b1;
