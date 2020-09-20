@@ -3,7 +3,13 @@ import classes from "../App.module.scss";
 import { NavLink } from "react-router-dom";
 import Backdrop from "./Backdrop";
 const gapi = window.gapi;
-function Navigation({ showMenu, backdropClickHandler, gapiSignedIn }) {
+const auth = window.firebase.auth;
+function Navigation({
+  showMenu,
+  backdropClickHandler,
+  gapiSignedIn,
+  provider,
+}) {
   return (
     <div>
       <nav
@@ -37,6 +43,7 @@ function Navigation({ showMenu, backdropClickHandler, gapiSignedIn }) {
               className={classes.navigationList__item}
               onClick={() => {
                 gapi.auth2.getAuthInstance().signOut();
+                auth().signOut();
                 backdropClickHandler();
               }}
             >
@@ -46,7 +53,10 @@ function Navigation({ showMenu, backdropClickHandler, gapiSignedIn }) {
             <li
               className={classes.navigationList__item}
               onClick={() => {
-                gapi.auth2.getAuthInstance().signIn();
+                auth()
+                  .signInWithPopup(provider)
+                  .then(() => gapi.auth2.getAuthInstance().signIn());
+
                 backdropClickHandler();
               }}
             >

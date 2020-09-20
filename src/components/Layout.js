@@ -12,6 +12,7 @@ import Navigation from "./Navigation";
 
 const Layout = (props) => {
   const [gapiSignedIn, setGapiSignedIn] = useState(false);
+  const [firestoreSignedIn, setFirestoreSignedIn] = useState(false);
   const [events, setEvents] = useState([]);
   const [categories, setCategories] = useState([]);
   const [showMenu, setShowMenu] = useState(false);
@@ -21,11 +22,13 @@ const Layout = (props) => {
   ];
   const SCOPES = "https://www.googleapis.com/auth/calendar.events";
   const db = window.firebase.firestore();
-  // const auth = window.firebase.auth();
-  console.log(events);
+  const auth = window.firebase.auth;
+  // const firebase = window.firebase;
+  const provider = new auth.GoogleAuthProvider();
+  provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
+  console.log(provider);
   console.log(categories);
 
-  // test firestore
   // get categories from firestore and put it in categories state
   const categoriesFromDB = () => {
     db.collection("categoriesReact")
@@ -115,6 +118,7 @@ const Layout = (props) => {
           showMenu={showMenu}
           backdropClickHandler={backdropClickHandler}
           gapiSignedIn={gapiSignedIn}
+          provider={provider}
         />
 
         {/* {props.children} */}

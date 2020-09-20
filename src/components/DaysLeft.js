@@ -1,6 +1,6 @@
 import React from "react";
 import Aux from "../components/wraper";
-import { differenceInDays, formatDistance } from "date-fns";
+import { formatDistance } from "date-fns";
 function DaysLeft({ date }) {
   return (
     <Aux>

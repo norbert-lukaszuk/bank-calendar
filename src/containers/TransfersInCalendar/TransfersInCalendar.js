@@ -1,7 +1,6 @@
 import React from "react";
 import EventsList from "../../components/EventsList";
 import classes from "../../App.module.scss";
-const gapi = window.gapi;
 const TransfersInCalendar = ({ isSignedIn, events }) => {
   console.log(events);
   if (isSignedIn) {
