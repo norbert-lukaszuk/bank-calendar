@@ -6,9 +6,6 @@ const TransfersInCalendar = ({ isSignedIn, events }) => {
   if (isSignedIn) {
     return (
       <div className={classes.eventsFromCalendar}>
-        {/* <button onClick={() => gapi.auth2.getAuthInstance().signOut()}>
-          Sign Out
-        </button> */}
         <EventsList events={events} />
       </div>
     );
@@ -16,9 +13,6 @@ const TransfersInCalendar = ({ isSignedIn, events }) => {
     return (
       <div className={classes.eventsFromCalendar}>
         <h4>Loading please wait ...</h4>
-        {/* <button onClick={() => gapi.auth2.getAuthInstance().signIn()}>
-          Sign In
-        </button> */}
       </div>
     );
   }

@@ -12,7 +12,6 @@ import Navigation from "./Navigation";
 
 const Layout = (props) => {
   const [gapiSignedIn, setGapiSignedIn] = useState(false);
-  const [firestoreSignedIn, setFirestoreSignedIn] = useState(false);
   const [events, setEvents] = useState([]);
   const [categories, setCategories] = useState([]);
   const [showMenu, setShowMenu] = useState(false);

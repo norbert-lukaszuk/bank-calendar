@@ -1,9 +1,12 @@
 .appHeader {
   text-align: center;
 }
+* {
+  box-sizing: border-box;
+}
 .navigation {
   background-color: #fbfffd;
-  width: 70%;
+  width: 60%;
   height: 100vh;
   top: 0;
   position: absolute;
@@ -16,17 +19,22 @@
     left: 10px;
   }
   &List {
+    padding: 0;
+    width: 100%;
     list-style: none;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
 
     &__item {
-      padding: 10px;
+      width: 90%;
+      padding: 10px 5px;
+      margin: 0;
       text-decoration: none;
       color: black;
-      border-radius: 5px;
+      border-bottom: 1px solid #c4c4c4;
+      text-align: center;
       cursor: pointer;
       &__active {
         background: linear-gradient(45deg, #52b788, #40916c);
@@ -86,7 +94,7 @@
 }
 .categories {
   width: 90%;
-  margin-top: 50px;
+  margin: 60px auto;
 
   &__clickOn {
     text-align: center;
@@ -95,9 +103,14 @@
   &List {
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     &__link {
       text-decoration: none;
       color: black;
+      width: 100%;
+      margin: 0 auto;
     }
   }
 }
@@ -190,5 +203,8 @@
   .categoriesList {
     width: 50%;
     margin: 50px auto;
+    &__link:hover {
+      color: #52b788;
+    }
   }
 }
