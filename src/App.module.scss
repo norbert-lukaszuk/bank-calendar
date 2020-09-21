@@ -14,7 +14,6 @@
     position: absolute;
     top: 10px;
     left: 10px;
-    // color: #e85d04;
   }
   &List {
     list-style: none;
@@ -28,6 +27,7 @@
       text-decoration: none;
       color: black;
       border-radius: 5px;
+      cursor: pointer;
       &__active {
         background: linear-gradient(45deg, #52b788, #40916c);
         color: white;
@@ -169,5 +169,26 @@
   &__loading {
     margin-top: 50px;
     text-align: center;
+  }
+}
+@media (min-width: 361px) {
+  .navigation {
+    width: 20%;
+    &Button {
+      cursor: pointer;
+    }
+  }
+
+  .eventsFromCalendar {
+    width: 40%;
+    margin: 50px auto;
+  }
+  .transferDetails {
+    width: 60%;
+    margin: 55px auto;
+  }
+  .categoriesList {
+    width: 50%;
+    margin: 50px auto;
   }
 }

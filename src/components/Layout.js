@@ -29,21 +29,7 @@ const Layout = (props) => {
   console.log(provider);
   console.log(categories);
 
-  // const categoriesFromDB = () => {
-  //   db.collection("categoriesReact")
-  //     .get()
-  //     .then((resp) => {
-  //       let arr = [];
-  //       resp.docs.forEach((doc) => {
-  //         // arr.push(doc.data().categorieName);
-  //         arr.push({ categorieName: doc.data().categorieName, id: doc.id });
-  //       });
-  //       return arr;
-  //     })
-  //     .then((catArray) => setCategories(catArray))
-  //     .catch((err) => console.log(err));
-  // };
-  // get categories from firestore and put it in categories state
+  // get categories from firestore if signed in and put it in categories state
 
   const getCategories = () => {
     auth().onAuthStateChanged((user) => {
