@@ -11,7 +11,7 @@ const TransferDetails = (props) => {
   const [title, setTitle] = useState("");
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
   const [linkToEvent, setLinkToEvent] = useState("");
-
+  console.log(props.history);
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(title, amount, typeof date);
@@ -44,6 +44,7 @@ const TransferDetails = (props) => {
         setLinkToEvent(resp.result.htmlLink);
         // forcess update of EventsInCalendar with added event
         props.getEventsFromCalendar();
+        props.history.push("/");
       });
   };
   return (
