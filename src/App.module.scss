@@ -57,16 +57,23 @@
   margin-top: 55px;
   &__event {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     text-decoration: none;
     color: black;
     background-color: #e5e5e5;
     margin: 5px 0;
     border-radius: 15px 0 15px 0;
+
     & a {
       text-decoration: none;
       color: #000000;
+    }
+    & span:nth-of-type(1) {
+      margin-left: 20px;
+    }
+    & span:last-of-type {
+      margin-right: 20px;
     }
   }
   &__icon {
