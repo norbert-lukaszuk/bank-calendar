@@ -4,6 +4,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import AddTransfer from "../containers/AddTransfer/AddTransfer";
+import NewCategorie from "../containers/NewCategorie/NewCategorie";
 import TransferDetails from "../containers/TransferDetails/TransferDetails";
 import TransfersInCalendar from "../containers/TransfersInCalendar/TransfersInCalendar";
 import EventDetails from "../containers/EventDetails/EventDetails";
@@ -151,6 +152,7 @@ const Layout = (props) => {
             />
           )}
         />
+        <Route path="/newCat" exact component={NewCategorie} />
         <Route
           path="/event/:id"
           exact

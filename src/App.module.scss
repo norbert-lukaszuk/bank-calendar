@@ -102,7 +102,19 @@
 .categories {
   width: 90%;
   margin: 60px auto;
-
+  &Header {
+    // background-color: blueviolet;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    & a {
+      margin-right: 20px;
+      color: #000000;
+    }
+    & h4 {
+      margin-left: 20px;
+    }
+  }
   &__clickOn {
     text-align: center;
     font-size: 1.25rem;
