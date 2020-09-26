@@ -152,7 +152,13 @@ const Layout = (props) => {
             />
           )}
         />
-        <Route path="/newCat" exact component={NewCategorie} />
+        <Route
+          path="/newCat"
+          exact
+          render={(props) => (
+            <NewCategorie {...props} getCategories={getCategories} />
+          )}
+        />
         <Route
           path="/event/:id"
           exact
