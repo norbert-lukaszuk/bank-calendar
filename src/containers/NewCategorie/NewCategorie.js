@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import classes from "../../App.module.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 const db = window.firebase.firestore();
+
 function NewCategorie(props) {
   const [categorieName, setCategorieName] = useState("");
   const [titlePrefill, setTitlePrefill] = useState("");
@@ -27,7 +31,12 @@ function NewCategorie(props) {
   };
   return (
     <div className={classes.newCategorie}>
-      <h2>Add new categorie</h2>
+      <div className={classes.newCategorie__headerWraper}>
+        <Link to="/add">
+          <FontAwesomeIcon icon={faChevronLeft} size="2x" />
+        </Link>
+        <h2>Add new categorie</h2>
+      </div>
       <form onSubmit={handleFormSubmit} className={classes.newCategorie__form}>
         <label htmlFor="categorieName">New categorie name</label>
         <input
@@ -52,7 +61,9 @@ function NewCategorie(props) {
           onChange={(e) => setAccountNumber(e.target.value)}
           value={accountNumber}
         />
-        <button type="submit">Submit</button>
+        <button type="submit" className={classes.newCategorie__submitButton}>
+          Submit
+        </button>
       </form>
     </div>
   );

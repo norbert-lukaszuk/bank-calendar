@@ -50,7 +50,7 @@ const TransferDetails = (props) => {
   return (
     <div className={classes.transferDetails}>
       <Link to="/add" className={classes.transferDetails__categorieWraper}>
-        <FontAwesomeIcon icon={faChevronLeft} />
+        <FontAwesomeIcon icon={faChevronLeft} size="2x" />
         <h2>{categorie}</h2>
       </Link>
 
