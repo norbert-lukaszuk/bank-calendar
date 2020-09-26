@@ -8,10 +8,11 @@ const gapi = window.gapi;
 const TransferDetails = (props) => {
   const categorie = props.match.params.cat;
   const [amount, setAmount] = useState("");
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState(props.location.state.titlePrefill);
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
   const [linkToEvent, setLinkToEvent] = useState("");
-  console.log(props.history);
+
+  console.log(props);
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(title, amount, typeof date);
@@ -53,8 +54,12 @@ const TransferDetails = (props) => {
         <FontAwesomeIcon icon={faChevronLeft} size="2x" />
         <h2>{categorie}</h2>
       </Link>
-
+      <p>{props.location.state.categorieId}</p>
       <form onSubmit={handleSubmit} className={classes.transferDetails__form}>
+        <label htmlFor="mbank">{props.location.state.bankName[0]}</label>
+        <input type="radio" name="bankSelect" id="mbank" />
+        <label htmlFor="pko">{props.location.state.bankName[1]}</label>
+        <input type="radio" name="bankSelect" id="pko" />
         <label htmlFor="date">Date of paymant</label>
         <input
           type="date"

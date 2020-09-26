@@ -13,6 +13,11 @@ function AddTransfer({ categories }) {
       <Link
         to={{
           pathname: `/add/details/${categorie.categorieName}`,
+          state: {
+            categorieId: categorie.id,
+            bankName: categorie.bankName,
+            titlePrefill: categorie.titlePrefill,
+          },
         }}
         key={categorie.id}
         className={classes.categoriesList__link}

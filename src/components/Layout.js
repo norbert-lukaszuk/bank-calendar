@@ -40,7 +40,12 @@ const Layout = (props) => {
             let arr = [];
             resp.docs.forEach((doc) => {
               // arr.push(doc.data().categorieName);
-              arr.push({ categorieName: doc.data().categorieName, id: doc.id });
+              arr.push({
+                categorieName: doc.data().categorieName,
+                bankName: doc.data().bankName,
+                titlePrefill: doc.data().titlePrefill,
+                id: doc.id,
+              });
             });
             return arr;
           })
