@@ -143,7 +143,18 @@
   justify-content: space-between;
   border-bottom: 1px solid #bcb8b1;
 }
-
+.newCategorie {
+  margin-top: 55px;
+  & h2 {
+    text-align: center;
+  }
+  &__form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+}
 .transferDetails {
   display: flex;
   justify-content: center;
@@ -224,6 +235,12 @@
     margin: 50px auto;
     &__link:hover {
       color: #52b788;
+    }
+  }
+  .categories {
+    &Header {
+      margin: 50px auto;
+      width: 50%;
     }
   }
 }
