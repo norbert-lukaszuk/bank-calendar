@@ -57,11 +57,12 @@ const TransferDetails = (props) => {
         <FontAwesomeIcon icon={faChevronLeft} size="2x" />
         <h2>{categorie}</h2>
       </Link>
-      <div>
-        <span>{props.location.state.bankName[1]}</span>
-        <span>
-          {props.location.state.bankAccount[props.location.state.bankName[1]]}
-        </span>
+      <div className={classes.transferDetails__accountNumberWraper}>
+        {props.location.state.bankAccount[bankDefault] ? (
+          <span>
+            Account number: {props.location.state.bankAccount[bankDefault]}
+          </span>
+        ) : null}
       </div>
       <form onSubmit={handleSubmit} className={classes.transferDetails__form}>
         <div className={classes.transferDetails__bankSelectWraper}>
@@ -111,7 +112,6 @@ const TransferDetails = (props) => {
         />
         <button type="submit">Add transfer</button>
       </form>
-      {linkToEvent ? <a href={linkToEvent}>See event in calendar</a> : null}
     </div>
   );
 };

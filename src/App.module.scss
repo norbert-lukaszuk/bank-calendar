@@ -196,6 +196,9 @@
   align-items: center;
   flex-direction: column;
   margin-top: 50px;
+  &__accountNumberWraper {
+    color: #bcb8b1;
+  }
   &__bankSelectWraper {
     display: flex;
     justify-content: center;
