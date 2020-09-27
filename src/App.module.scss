@@ -196,6 +196,11 @@
   align-items: center;
   flex-direction: column;
   margin-top: 50px;
+  &__bankSelectWraper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   &__categorieWraper {
     width: 90%;
     border-bottom: 1px solid #bcb8b1;
@@ -207,6 +212,20 @@
     color: #bcb8b1;
     & h2 {
       margin: 10px auto;
+    }
+  }
+  &__radioButtonWraper {
+    & input[type="radio"] {
+      display: none;
+    }
+    & label {
+      padding: 10px 20px;
+      border-radius: 5px;
+      width: 90px;
+    }
+    & input:checked + label {
+      background-color: #bcb8b1;
+      color: #fff;
     }
   }
   &__form {

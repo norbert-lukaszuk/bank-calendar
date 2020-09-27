@@ -10,8 +10,11 @@ const TransferDetails = (props) => {
   const [amount, setAmount] = useState("");
   const [title, setTitle] = useState(props.location.state.titlePrefill);
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
+  const [bankDefault, setBankDefault] = useState(
+    props.location.state.bankDefault
+  );
   const [linkToEvent, setLinkToEvent] = useState("");
-
+  console.log(bankDefault);
   console.log(props);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,7 +24,7 @@ const TransferDetails = (props) => {
       .insert({
         calendarId: "afqpdpcef0fvv5o39r3rvujte0@group.calendar.google.com",
         resource: {
-          summary: categorie,
+          summary: `${categorie} - ${bankDefault}`,
           description: `${amount} zł@${title}`,
           start: {
             // dateTime: "2020-09-23T13:00:00+02:00",
@@ -56,10 +59,30 @@ const TransferDetails = (props) => {
       </Link>
       <p>{props.location.state.categorieId}</p>
       <form onSubmit={handleSubmit} className={classes.transferDetails__form}>
-        <label htmlFor="mbank">{props.location.state.bankName[0]}</label>
-        <input type="radio" name="bankSelect" id="mbank" />
-        <label htmlFor="pko">{props.location.state.bankName[1]}</label>
-        <input type="radio" name="bankSelect" id="pko" />
+        <div className={classes.transferDetails__bankSelectWraper}>
+          <div className={classes.transferDetails__radioButtonWraper}>
+            <input
+              type="radio"
+              name="bankSelect"
+              id="mbank"
+              value="mbank"
+              checked={bankDefault === "mbank"}
+              onChange={(e) => setBankDefault(e.target.value)}
+            />
+            <label htmlFor="mbank">{props.location.state.bankName[0]}</label>
+          </div>
+          <div className={classes.transferDetails__radioButtonWraper}>
+            <input
+              type="radio"
+              name="bankSelect"
+              id="pko"
+              value="pko"
+              checked={bankDefault === "pko"}
+              onChange={(e) => setBankDefault(e.target.value)}
+            />
+            <label htmlFor="pko">{props.location.state.bankName[1]}</label>
+          </div>
+        </div>
         <label htmlFor="date">Date of paymant</label>
         <input
           type="date"

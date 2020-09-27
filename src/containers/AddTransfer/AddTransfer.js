@@ -16,6 +16,7 @@ function AddTransfer({ categories }) {
           state: {
             categorieId: categorie.id,
             bankName: categorie.bankName,
+            bankDefault: categorie.bankDefault,
             titlePrefill: categorie.titlePrefill,
           },
         }}

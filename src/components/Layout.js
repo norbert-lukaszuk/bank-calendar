@@ -43,6 +43,7 @@ const Layout = (props) => {
               arr.push({
                 categorieName: doc.data().categorieName,
                 bankName: doc.data().bankName,
+                bankDefault: doc.data().bankDefault,
                 titlePrefill: doc.data().titlePrefill,
                 id: doc.id,
               });
