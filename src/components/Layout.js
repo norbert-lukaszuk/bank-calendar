@@ -44,6 +44,7 @@ const Layout = (props) => {
                 categorieName: doc.data().categorieName,
                 bankName: doc.data().bankName,
                 bankDefault: doc.data().bankDefault,
+                bankAccount: doc.data().bankAccount,
                 titlePrefill: doc.data().titlePrefill,
                 id: doc.id,
               });

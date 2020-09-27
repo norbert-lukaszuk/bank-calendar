@@ -70,6 +70,7 @@ const EventDetails = (props) => {
         console.log(resp.result);
         props.getEventsFromCalendar();
       })
+      .then(() => props.history.push("/"))
       .catch((err) => console.error(err));
   };
   const handleDeleteEvent = () => {
@@ -133,7 +134,12 @@ const EventDetails = (props) => {
           </select>
           <button type="submit">Update</button>
         </form>
-        <button onClick={handleDeleteEvent}>Delete transfer</button>
+        <button
+          className={classes.transferDetails__deleteButton}
+          onClick={handleDeleteEvent}
+        >
+          Delete transfer
+        </button>
       </div>
     );
   } else {

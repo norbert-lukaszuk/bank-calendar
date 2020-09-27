@@ -8,6 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 function AddTransfer({ categories }) {
+  console.log(categories[9].bankAccount);
   const CategoriesList = categories.map((categorie) => {
     return (
       <Link
@@ -17,6 +18,7 @@ function AddTransfer({ categories }) {
             categorieId: categorie.id,
             bankName: categorie.bankName,
             bankDefault: categorie.bankDefault,
+            bankAccount: categorie.bankAccount,
             titlePrefill: categorie.titlePrefill,
           },
         }}

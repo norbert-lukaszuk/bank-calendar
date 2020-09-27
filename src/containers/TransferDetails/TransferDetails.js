@@ -14,7 +14,7 @@ const TransferDetails = (props) => {
     props.location.state.bankDefault
   );
   const [linkToEvent, setLinkToEvent] = useState("");
-  console.log(bankDefault);
+  console.log(props.location.state.bankAccount);
   console.log(props);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -57,6 +57,12 @@ const TransferDetails = (props) => {
         <FontAwesomeIcon icon={faChevronLeft} size="2x" />
         <h2>{categorie}</h2>
       </Link>
+      <div>
+        <span>{props.location.state.bankName[1]}</span>
+        <span>
+          {props.location.state.bankAccount[props.location.state.bankName[1]]}
+        </span>
+      </div>
       <form onSubmit={handleSubmit} className={classes.transferDetails__form}>
         <div className={classes.transferDetails__bankSelectWraper}>
           <div className={classes.transferDetails__radioButtonWraper}>
