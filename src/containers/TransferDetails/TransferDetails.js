@@ -57,7 +57,6 @@ const TransferDetails = (props) => {
         <FontAwesomeIcon icon={faChevronLeft} size="2x" />
         <h2>{categorie}</h2>
       </Link>
-      <p>{props.location.state.categorieId}</p>
       <form onSubmit={handleSubmit} className={classes.transferDetails__form}>
         <div className={classes.transferDetails__bankSelectWraper}>
           <div className={classes.transferDetails__radioButtonWraper}>

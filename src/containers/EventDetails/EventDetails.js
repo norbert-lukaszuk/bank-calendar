@@ -62,12 +62,7 @@ const EventDetails = (props) => {
           },
           reminders: {
             useDefault: false,
-            overrides: [
-              reminder1,
-              reminder2,
-              // { method: "popup", minutes: 120 },
-              // { method: "popup", minutes: 240 },
-            ],
+            overrides: [reminder1, reminder2],
           },
         },
       })
@@ -77,10 +72,18 @@ const EventDetails = (props) => {
       })
       .catch((err) => console.error(err));
   };
+  const handleDeleteEvent = () => {
+    gapi.client.calendar.events
+      .delete({
+        calendarId: "afqpdpcef0fvv5o39r3rvujte0@group.calendar.google.com",
+        eventId: eventId,
+      })
+      .then(() => props.getEventsFromCalendar())
+      .then(() => props.history.push("/"));
+  };
   useEffect(getEvent, []);
   if (event) {
     console.log(event.result.start.dateTime);
-    // setTitle(event.result.summary);
     return (
       <div className={classes.transferDetails}>
         <h2>{event.result.summary}</h2>
@@ -130,6 +133,7 @@ const EventDetails = (props) => {
           </select>
           <button type="submit">Update</button>
         </form>
+        <button onClick={handleDeleteEvent}>Delete transfer</button>
       </div>
     );
   } else {
