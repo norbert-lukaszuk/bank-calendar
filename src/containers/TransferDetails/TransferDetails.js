@@ -13,7 +13,6 @@ const TransferDetails = (props) => {
   const [bankDefault, setBankDefault] = useState(
     props.location.state.bankDefault
   );
-  const [linkToEvent, setLinkToEvent] = useState("");
   console.log(props.location.state.bankAccount);
   console.log(props);
   const handleSubmit = (e) => {
@@ -27,11 +26,9 @@ const TransferDetails = (props) => {
           summary: `${categorie} - ${bankDefault}`,
           description: `${amount} zł@${title}`,
           start: {
-            // dateTime: "2020-09-23T13:00:00+02:00",
             dateTime: `${date}T13:00:00+02:00`,
           },
           end: {
-            // dateTime: "2020-09-23T14:30:00+02:00",
             dateTime: `${date}T14:30:00+02:00`,
           },
           reminders: {
@@ -45,7 +42,6 @@ const TransferDetails = (props) => {
       })
       .then((resp) => {
         console.log(resp.result);
-        setLinkToEvent(resp.result.htmlLink);
         // forcess update of EventsInCalendar with added event
         props.getEventsFromCalendar();
         props.history.push("/");

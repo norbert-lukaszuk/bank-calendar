@@ -9,12 +9,15 @@ function NewCategorie(props) {
   const [categorieName, setCategorieName] = useState("");
   const [titlePrefill, setTitlePrefill] = useState("");
   const [accountNumber, setAccountNumber] = useState("");
+  const [bankDefault, setBankDefault] = useState("");
   const handleFormSubmit = (e) => {
     e.preventDefault();
     console.log(categorieName, titlePrefill, accountNumber);
     db.collection("categoriesReact")
       .add({
         bankName: ["mbank", "pko"],
+        bankAccount: {},
+        bankDefault: bankDefault,
         calendarId: "afqpdpcef0fvv5o39r3rvujte0@group.calendar.google.com",
         categorieName: categorieName,
         color: "",
@@ -38,6 +41,29 @@ function NewCategorie(props) {
         <h2>Add new categorie</h2>
       </div>
       <form onSubmit={handleFormSubmit} className={classes.newCategorie__form}>
+        <div className={classes.transferDetails__bankSelectWraper}>
+          <div className={classes.transferDetails__radioButtonWraper}>
+            <input
+              type="radio"
+              name="bankSelect"
+              id="mbank"
+              value="mbank"
+              checked={true}
+              onChange={(e) => setBankDefault(e.target.value)}
+            />
+            <label htmlFor="mbank">mbank</label>
+          </div>
+          <div className={classes.transferDetails__radioButtonWraper}>
+            <input
+              type="radio"
+              name="bankSelect"
+              id="pko"
+              value="pko"
+              onChange={(e) => setBankDefault(e.target.value)}
+            />
+            <label htmlFor="pko">pko</label>
+          </div>
+        </div>
         <label htmlFor="categorieName">New categorie name</label>
         <input
           type="text"
