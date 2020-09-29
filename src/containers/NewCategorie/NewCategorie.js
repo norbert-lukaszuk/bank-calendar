@@ -16,7 +16,8 @@ function NewCategorie(props) {
     db.collection("categoriesReact")
       .add({
         bankName: ["mbank", "pko"],
-        bankAccount: {},
+        // use [] to set object key from variable or state
+        bankAccount: { [bankDefault]: accountNumber },
         bankDefault: bankDefault,
         calendarId: "afqpdpcef0fvv5o39r3rvujte0@group.calendar.google.com",
         categorieName: categorieName,
