@@ -10,6 +10,7 @@ import TransfersInCalendar from "../containers/TransfersInCalendar/TransfersInCa
 import EventDetails from "../containers/EventDetails/EventDetails";
 import classes from "../App.module.scss";
 import Navigation from "./Navigation";
+import CategorieEdit from "../containers/CategorieEdit/CategorieEdit";
 
 const Layout = (props) => {
   const [gapiSignedIn, setGapiSignedIn] = useState(false);
@@ -176,6 +177,7 @@ const Layout = (props) => {
             />
           )}
         />
+        <Route path="/categorie/edit/:id" component={CategorieEdit} />
       </Aux>
     </BrowserRouter>
   );

@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import classes from "../../App.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft, faMoneyCheck } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronLeft,
+  faMoneyCheck,
+  faPoop,
+} from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 const gapi = window.gapi;
 
@@ -52,6 +56,9 @@ const TransferDetails = (props) => {
       <Link to="/add" className={classes.transferDetails__categorieWraper}>
         <FontAwesomeIcon icon={faChevronLeft} size="2x" />
         <h2>{categorie}</h2>
+      </Link>
+      <Link to={`/categorie/edit/${props.location.state.categorieId}`}>
+        <FontAwesomeIcon icon={faPoop} />
       </Link>
       <div className={classes.transferDetails__accountNumberWraper}>
         {props.location.state.bankAccount[bankDefault] ? (
