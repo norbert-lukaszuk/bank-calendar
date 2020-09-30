@@ -7,7 +7,10 @@ function CategorieEdit(props) {
   const [categorieName, setCategorieName] = useState("");
   const [bankDefault, setBankDefault] = useState("");
   const [titlePrefill, setTitlePrefill] = useState("");
-  const [accountNumber, setAccountNumber] = useState("");
+  const [accountNumber, setAccountNumber] = useState({
+    mbank: "123",
+    pko: "123",
+  });
   console.log(accountNumber);
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -15,8 +18,12 @@ function CategorieEdit(props) {
       .doc(props.match.params.id)
       .update({
         bankAccount: accountNumber,
+        bankDefault: bankDefault,
+        categorieName: categorieName,
+        titlePrefill: titlePrefill,
       })
       .catch((err) => console.error(err));
+    props.history.push(`/add`);
   };
   const getCategorieToEdit = () => {
     db.collection("categoriesReact")
@@ -91,7 +98,8 @@ function CategorieEdit(props) {
               };
             });
           }}
-          value={accountNumber.bankDefault}
+          // put that ||"" to get reed of warnings in console
+          value={accountNumber[bankDefault] || ""}
         />
         <button type="submit" className={classes.newCategorie__submitButton}>
           Submit change
